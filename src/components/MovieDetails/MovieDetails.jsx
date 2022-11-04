@@ -22,6 +22,17 @@ function MovieDetails() {
     return (
         <>
             <h1> Movie Details</h1>
+            {activeMovie[0] && <img src={activeMovie[0].poster}/>}
+            {activeMovie[0]&& <h2>Title: {activeMovie[0].title}</h2>}
+            {/*  {gif.catergory_id && <p>GIF category: {category[gif.catergory_id]}</p>}*/}
+            <h2>Genres: </h2>
+            <ul>
+                {activeMovie.map(movie=>(
+                    <li key={movie.name}>{movie.name}</li>
+                ))}
+            </ul>
+            <h2>Description</h2>
+            {activeMovie[0] && <p>{activeMovie[0].description}</p>}
             <button onClick={()=>history.push('/')}>Back to Movie List</button>
         </>
     )
