@@ -17,6 +17,7 @@ function* rootSaga() {
     yield takeEvery('GET_TARGET_MOVIE', getTargetMovie);
 }
 
+// get a movie by id from the DB
 function* getTargetMovie(action) {
     console.log('getting target movie!');
     let results = yield axios.get(`/api/movie/${action.payload}`)
@@ -63,6 +64,7 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store the data for /description/:id
 const activeMovie = (state=[], action) => {
     switch (action.type){
         case 'SET_ACTIVE_MOVIE':

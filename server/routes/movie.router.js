@@ -16,6 +16,7 @@ router.get('/', (req, res) => {
 
 });
 
+// calls for everything from the database with the target movie id
 router.get('/:id', (req, res) => {
   const sqlText = `SELECT "genres"."name", * FROM "movies_genres" 
   JOIN "movies" ON "movies"."id" = "movie_id" 

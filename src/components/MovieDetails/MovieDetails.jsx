@@ -13,6 +13,7 @@ function MovieDetails() {
 
     useEffect(()=>{
         console.log('loading detail page')
+        //Calls a dispatch to index.js to run a get request to the database
         dispatch({
             type: 'GET_TARGET_MOVIE',
             payload: params.id
