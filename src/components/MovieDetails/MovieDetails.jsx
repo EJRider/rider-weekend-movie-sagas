@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 function MovieDetails() {
     const dispatch = useDispatch();
     const params=useParams();
-    
+    const history = useHistory();
+
     useEffect(()=>{
         console.log('loading detail page')
     }, [params.id])
@@ -14,6 +15,7 @@ function MovieDetails() {
     return (
         <>
             <h1> Movie Details</h1>
+            <button onClick={()=>history.push('/')}>Back to Movie List</button>
         </>
     )
 }
