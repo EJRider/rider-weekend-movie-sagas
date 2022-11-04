@@ -20,6 +20,10 @@ function* rootSaga() {
 function* getTargetMovie(action) {
     console.log('getting target movie!');
     let results = axios.get(`/movie/${action.payload}`)
+    yield put({
+        type: 'SET_ACTIVE_MOVIE',
+        payload: results.data
+    })
 }
 
 function* fetchAllMovies() {
