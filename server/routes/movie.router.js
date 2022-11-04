@@ -16,6 +16,24 @@ router.get('/', (req, res) => {
 
 });
 
+// calls for everything from the database with the target movie id
+router.get('/:id', (req, res) => {
+  const sqlText = `SELECT "genres"."name", * FROM "movies_genres" 
+  JOIN "movies" ON "movies"."id" = "movie_id" 
+  JOIN "genres" ON "genres"."id" = "genre_id"
+  WHERE "movie_id" = $1;`
+  const sqlParams = [req.params.id]
+  pool.query(sqlText,sqlParams)
+    .then(dbRes => {
+      console.log('got movie!', dbRes.rows);
+      res.send(dbRes.rows);
+    })
+    .catch(dbErr => {
+      console.error('error in getting movie', dbErr);
+      res.sendStatus(500)
+    })
+})
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
