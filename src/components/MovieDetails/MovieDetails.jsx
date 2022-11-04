@@ -7,6 +7,9 @@ function MovieDetails() {
     const dispatch = useDispatch();
     const params=useParams();
     const history = useHistory();
+    const activeMovie = useSelector(store => store.activeMovie);
+
+    console.log('active movie is', activeMovie);
 
     useEffect(()=>{
         console.log('loading detail page')
