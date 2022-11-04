@@ -17,8 +17,9 @@ function* rootSaga() {
     yield takeEvery('GET_TARGET_MOVIE', getTargetMovie);
 }
 
-function* getTargetMovie() {
+function* getTargetMovie(action) {
     console.log('getting target movie!');
+    let results = axios.get(`/movie/${action.payload}`)
 }
 
 function* fetchAllMovies() {

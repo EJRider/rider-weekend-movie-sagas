@@ -10,6 +10,10 @@ function MovieDetails() {
 
     useEffect(()=>{
         console.log('loading detail page')
+        dispatch({
+            type: 'GET_TARGET_MOVIE',
+            payload: params.id
+        });
     }, [params.id])
 
     return (
