@@ -19,7 +19,8 @@ function* rootSaga() {
 
 function* getTargetMovie(action) {
     console.log('getting target movie!');
-    let results = axios.get(`/movie/${action.payload}`)
+    let results = yield axios.get(`/api/movie/${action.payload}`)
+    console.log('results are', results);
     yield put({
         type: 'SET_ACTIVE_MOVIE',
         payload: results.data
@@ -65,7 +66,7 @@ const genres = (state = [], action) => {
 const activeMovie = (state=[], action) => {
     switch (action.type){
         case 'SET_ACTIVE_MOVIE':
-            return state;
+            return action.payload;
     }
     return state;
 }

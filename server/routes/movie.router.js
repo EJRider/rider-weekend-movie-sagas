@@ -26,7 +26,6 @@ router.get('/:id', (req, res) => {
     .then(dbRes => {
       console.log('got movie!', dbRes.rows);
       res.send(dbRes.rows);
-      res.sendStatus(200);
     })
     .catch(dbErr => {
       console.error('error in getting movie', dbErr);
