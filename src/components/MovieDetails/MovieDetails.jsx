@@ -20,17 +20,19 @@ function MovieDetails() {
         });
     }, [params.id])
 
+    console.log('activeMovie', activeMovie);
+
     return (
         <>
             <h1> Movie Details</h1>
             {activeMovie && <img src={activeMovie.poster}/>}
             {activeMovie&& <h2>Title: {activeMovie.title}</h2>}
             <h2>Genres: </h2>
-            <ul>
-                {activeMovie && activeMovie.genres.map(genre => (
+           { activeMovie.genres && <ul>
+                {activeMovie.genres.map(genre => (
                     <li key={genre.id}>{genre.name}</li>
                 ))}
-            </ul>
+            </ul>}
             <h2>Description</h2>
             {activeMovie && <p>{activeMovie.description}</p>}
             <button onClick={()=>history.push('/')}>Back to Movie List</button>
